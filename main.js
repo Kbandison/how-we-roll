@@ -11,7 +11,7 @@ let twenties = [4];
  * HELPER FUNCTIONS *
 ********************/
 
-let getRandomNumber = function(max) {
+let getRandomNumber = function (max) {
     let rand = Math.random();
     let range = rand * max;
     let result = Math.ceil(range);
@@ -39,39 +39,26 @@ let meanD20 = document.querySelector('#d20-rolls-mean');
  * EVENT LISTENERS *
  *******************/
 imageD6.addEventListener('click', () => {
-    console.log('D6 Clicked');
-    d6RollFunc(); 
-    console.log('6 roll: ' + sixes);
+    d6RollFunc();
 });
 
 imageDouble1.addEventListener('click', () => {
-    console.log('Double1 Clicked');
-    getRandomNumber();
     double1RollFunc();
-    console.log(doubleSixes);
 });
 
 imageDouble2.addEventListener('click', () => {
-    console.log('Double2 Clicked');
-    getRandomNumber();
     double2RollFunc();
-    console.log(doubleSixes);
 });
 
 imageD12.addEventListener('click', () => {
-    console.log('D12 Clicked');
     d12RollFunc();
-    console.log(twelves);
 });
 
 imageD20.addEventListener('click', () => {
-    console.log('D20 Clicked');
     d20RollFunc();
-    console.log(twenties);
 });
 
 resetButton.addEventListener('click', () => {
-    console.log('Reset Clicked');
     reset();
 });
 
@@ -106,14 +93,12 @@ reset();
 
 let d6RollFunc = () => {
     let result = getRandomNumber(6);
-    console.log('Result: ' + result);
     imageD6.src = `images/d6/${result}.png`;
     sixes.push(result);
     meanD6.innerText = getMean(sixes);
 }
 let double1RollFunc = () => {
     let result = getRandomNumber(6);
-    console.log('Result: ' + result);
     imageDouble1.src = `images/d6/${result}.png`;
     doubleSixes.push(result);
     meanDouble.innerText = getMean(doubleSixes);
@@ -121,7 +106,6 @@ let double1RollFunc = () => {
 
 let double2RollFunc = () => {
     let result = getRandomNumber(6);
-    console.log('Result: ' + result);
     imageDouble2.src = `images/d6/${result}.png`;
     doubleSixes.push(result);
     meanDouble.innerText = getMean(doubleSixes);
@@ -129,7 +113,6 @@ let double2RollFunc = () => {
 
 let d12RollFunc = () => {
     let result = getRandomNumber(12);
-    console.log('Result: ' + result);
     imageD12.src = `images/numbers/${result}.png`;
     twelves.push(result);
     meanD12.innerText = getMean(twelves);
@@ -137,7 +120,6 @@ let d12RollFunc = () => {
 
 let d20RollFunc = () => {
     let result = getRandomNumber(6);
-    console.log('Result: ' + result);
     imageD20.src = `images/numbers/${result}.png`;
     twenties.push(result);
     meanD20.innerText = getMean(twenties);
@@ -151,7 +133,7 @@ let d20RollFunc = () => {
 let getMean = arr => {
     let total = 0;
 
-    for(let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         total += arr[i];
     }
 
