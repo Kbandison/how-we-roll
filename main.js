@@ -2,10 +2,10 @@
  * DATA *
  **********/
 
-let sixes = [1];
-let doubleSixes = [2];
-let twelves = [3];
-let twenties = [4];
+let sixes = [];
+let doubleSixes = [];
+let twelves = [];
+let twenties = [];
 
 /********************
  * HELPER FUNCTIONS *
@@ -34,28 +34,38 @@ let meanDouble = document.querySelector('#double-d6-rolls-mean');
 let meanD12 = document.querySelector('#d12-rolls-mean');
 let meanD20 = document.querySelector('#d20-rolls-mean');
 
+let medianD6 = document.querySelector('#d6-rolls-median');
+let medianDouble = document.querySelector('#double-d6-rolls-median');
+let medianD12 = document.querySelector('#d12-rolls-median');
+let medianD20 = document.querySelector('#d20-rolls-median');
+
 
 /*******************
  * EVENT LISTENERS *
  *******************/
 imageD6.addEventListener('click', () => {
     d6RollFunc();
+    console.log(sixes)
 });
 
 imageDouble1.addEventListener('click', () => {
     double1RollFunc();
+    console.log(doubleSixes)
 });
 
 imageDouble2.addEventListener('click', () => {
     double2RollFunc();
+    console.log(doubleSixes)
 });
 
 imageD12.addEventListener('click', () => {
     d12RollFunc();
+    console.log(twelves)
 });
 
 imageD20.addEventListener('click', () => {
     d20RollFunc();
+    console.log(twenties)
 });
 
 resetButton.addEventListener('click', () => {
@@ -82,6 +92,10 @@ let reset = () => {
     meanDouble.innerText = 'N/A';
     meanD12.innerText = 'N/A';
     meanD20.innerText = 'N/A';
+    medianD6.innerText = 'N/A';
+    medianDouble.innerText = 'N/A';
+    medianD12.innerText = 'N/A';
+    medianD20.innerText = 'N/A';
 }
 
 reset();
@@ -96,12 +110,14 @@ let d6RollFunc = () => {
     imageD6.src = `images/d6/${result}.png`;
     sixes.push(result);
     meanD6.innerText = getMean(sixes);
+    medianD6.innerText = getMedian(sixes);
 }
 let double1RollFunc = () => {
     let result = getRandomNumber(6);
     imageDouble1.src = `images/d6/${result}.png`;
     doubleSixes.push(result);
     meanDouble.innerText = getMean(doubleSixes);
+    medianDouble.innerText = getMedian(doubleSixes);
 }
 
 let double2RollFunc = () => {
@@ -109,6 +125,7 @@ let double2RollFunc = () => {
     imageDouble2.src = `images/d6/${result}.png`;
     doubleSixes.push(result);
     meanDouble.innerText = getMean(doubleSixes);
+    medianDouble.innerText = getMedian(doubleSixes);
 }
 
 let d12RollFunc = () => {
@@ -116,6 +133,7 @@ let d12RollFunc = () => {
     imageD12.src = `images/numbers/${result}.png`;
     twelves.push(result);
     meanD12.innerText = getMean(twelves);
+    medianD12.innerText = getMedian(twelves);
 }
 
 let d20RollFunc = () => {
@@ -123,6 +141,7 @@ let d20RollFunc = () => {
     imageD20.src = `images/numbers/${result}.png`;
     twenties.push(result);
     meanD20.innerText = getMean(twenties);
+    medianD20.innerText = getMedian(twenties);
 }
 
 
@@ -138,4 +157,23 @@ let getMean = arr => {
     }
 
     return Math.round((total / arr.length) * 100) / 100;
+}
+
+let getMedian = arr => {
+    let total = 0;
+    let mid = Math.floor(arr.length / 2);
+
+    sixes.sort();
+    doubleSixes.sort();
+    twelves.sort();
+    twenties.sort();
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr.length % 2 === 0){
+            return total += (arr[mid] + arr[mid - 1]) / 2;
+        } else if (arr.length % 2 != 0){
+            return total += arr[mid];
+        } 
+    }
+
 }
