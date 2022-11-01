@@ -179,7 +179,7 @@ let getMean = arr => {
 
 let getMedian = arr => {
     let total = 0;
-    let mid = Math.floor(arr.length / 2);
+    let mid = Math.floor(arr.length / 2);//gets the middle number
 
     sixes.sort();
     doubleSixes.sort();
