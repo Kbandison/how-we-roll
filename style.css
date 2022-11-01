@@ -42,3 +42,19 @@
     color: #fff;
     transform: translateY(-7px);
 }
+
+#d6{
+    border: solid black;
+    margin-bottom: 10px;
+}
+#double-d6{
+    border: solid black;
+    margin-bottom: 10px;
+}
+#d12{
+    border: solid black;
+    margin-bottom: 10px;
+}
+#d20{
+    border: solid black
+}
